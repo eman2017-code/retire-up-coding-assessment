@@ -16,29 +16,32 @@ class ListReturns extends React.Component {
   }
 
   listReturns() {
-    return this.state.records.map((record, i) => {
-      const { year, totalReturn, cummulativeReturn } = record;
-      return (
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Total Return</th>
-                <th>Cummulative Return</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={i}>
-                <td>{year}</td>
-                <td>{totalReturn}</td>
-                <td>{cummulativeReturn}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
-    });
+    return this.state.records
+      .slice(0)
+      .reverse()
+      .map((record, i) => {
+        const { year, totalReturn, cummulativeReturn } = record;
+        return (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Total Return</th>
+                  <th>Cummulative Return</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr key={i}>
+                  <td>{year}</td>
+                  <td>{totalReturn}</td>
+                  <td>{cummulativeReturn}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      });
   }
 
   render() {
