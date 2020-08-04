@@ -1,0 +1,17 @@
+#returns {
+  text-align: center;
+  width: 100%;
+}
+
+#returns td,
+#returns th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#returns th {
+  padding-top: 12px;
+  text-align: center;
+  background-color: #000000;
+  color: white;
+}

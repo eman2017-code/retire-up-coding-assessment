@@ -2,11 +2,13 @@ import React from "react";
 
 // css imports
 import "../assets/style.css";
+import ListReturns from "./ListReturns";
 
 function App() {
   return (
-    <div className="App">
-      <div>App Component</div>
+    <div>
+      <h1>RetireUp Coding Assessment</h1>
+      <ListReturns />
     </div>
   );
 }
