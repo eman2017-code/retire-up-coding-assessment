@@ -1,10 +1,12 @@
 import React from "react";
+// import Slider, { Range } from "rc-slider";
 
 //DATA IMPORT
 import returns from "../api/sp500.json";
 
 //STYLE IMPORT
 import "../assets/style.css";
+// import "rc-slider/assets/index.css";
 
 class ListReturns extends React.Component {
   constructor() {
@@ -13,7 +15,6 @@ class ListReturns extends React.Component {
     this.state = {
       records: [],
       cumulativeReturnArr: [],
-      // headerNames: ["Year", "TotalReturn", ""]
     };
   }
 
@@ -22,13 +23,14 @@ class ListReturns extends React.Component {
     returns.reverse();
 
     this.addCumulativeValues();
-    this.createCumulativeKey();
+    // this.createCumulativeKey();
   }
 
   // iterates through the json object and creates
   // a cumulativeKey key:value within each object
-  createCumulativeKey = () => {
+  createCumulativeKey() {
     const cumulativeValuesArr = this.state.cumulativeReturnArr;
+    console.log("cumulativeValuesArr", cumulativeValuesArr);
 
     // // iterate through cumulativeReturnArr to grab each value
     // for (let i = 0; i < cumulativeValuesArr.length; i++) {
@@ -42,11 +44,11 @@ class ListReturns extends React.Component {
     });
 
     this.setState({ records: returns });
-  };
+  }
 
   // sets the cumulative values for each record
   // in the returns array
-  addCumulativeValues = () => {
+  addCumulativeValues() {
     // list for totalReturns
     const totalReturnArr = [];
 
@@ -63,13 +65,15 @@ class ListReturns extends React.Component {
       return (arr[i] = Math.round(a + b * 100) / 100);
     }, 0);
 
-    // set cumulative returns array
-    this.setState({ cumulativeReturnArr: arr });
-    // this.state.cumulativeReturnArr.push(arr);
-  };
+    this.setState({
+      cumulativeReturnArr: [this.state.cumulativeReturnArr, arr],
+    });
+
+    this.createCumulativeKey();
+  }
 
   // renders elements out of records
-  renderRecordsData = () => {
+  renderRecordsData() {
     return this.state.records.map((record, i) => {
       const { year, totalReturn, cumulativeKey } = record;
       return (
@@ -80,12 +84,13 @@ class ListReturns extends React.Component {
         </tr>
       );
     });
-  };
+  }
 
   render() {
     // console.log("this.state in render", this.state);
     return (
       <div>
+        {/* <Slider /> */}
         <h4>Slider Component will be going here</h4>
         <table id="returns">
           <thead>
