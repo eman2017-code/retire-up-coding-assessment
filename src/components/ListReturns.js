@@ -23,53 +23,35 @@ class ListReturns extends React.Component {
     returns.reverse();
 
     this.addCumulativeValues();
-    // this.createCumulativeKey();
-  }
-
-  // iterates through the json object and creates
-  // a cumulativeKey key:value within each object
-  createCumulativeKey() {
-    const cumulativeValuesArr = this.state.cumulativeReturnArr;
-    console.log("cumulativeValuesArr", cumulativeValuesArr);
-
-    // // iterate through cumulativeReturnArr to grab each value
-    // for (let i = 0; i < cumulativeValuesArr.length; i++) {
-    //   // iterate through the returns array
-    //   console.log("cumulativeValuesArr[i]", cumulativeValuesArr[i]);
-    // }
-
-    returns.map((record) => {
-      record.cumulativeKey = "num";
-      return record;
-    });
-
-    this.setState({ records: returns });
   }
 
   // sets the cumulative values for each record
-  // in the returns array
   addCumulativeValues() {
     // list for totalReturns
     const totalReturnArr = [];
 
     // list for cumulative values
-    const arr = [];
+    const cumaltiveValues = [];
 
-    // convert each totalReturn into a number
+    // converts each totalReturn into a number
     returns.forEach((el) => {
       totalReturnArr.push(Number(el.totalReturn));
     });
 
     // create cumulative list of cumulative values
     totalReturnArr.reduce(function (a, b, i) {
-      return (arr[i] = Math.round(a + b * 100) / 100);
+      return (cumaltiveValues[i] = Math.round((a + b) * 100) / 100);
     }, 0);
 
-    this.setState({
-      cumulativeReturnArr: [this.state.cumulativeReturnArr, arr],
+    // iterates through newly created cumulativeValues[]
+    // and adds appropriate keys to returns array
+    const addedKeys = cumaltiveValues.map((elem, index) => {
+      const copyObj = { ...returns[index] };
+      copyObj.cumulativeKey = elem;
+      return copyObj;
     });
 
-    this.createCumulativeKey();
+    this.setState({ records: addedKeys });
   }
 
   // renders elements out of records
