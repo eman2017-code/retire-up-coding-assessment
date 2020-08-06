@@ -1,12 +1,12 @@
 import React from "react";
-// import Slider, { Range } from "rc-slider";
+import Slider, { Range } from "rc-slider";
 
 //DATA IMPORT
 import returns from "../api/sp500.json";
 
 //STYLE IMPORT
 import "../assets/style.css";
-// import "rc-slider/assets/index.css";
+import "rc-slider/assets/index.css";
 
 class ListReturns extends React.Component {
   constructor() {
@@ -69,11 +69,11 @@ class ListReturns extends React.Component {
   }
 
   render() {
-    // console.log("this.state in render", this.state);
     return (
       <div>
-        {/* <Slider /> */}
-        <h4>Slider Component will be going here</h4>
+        <div id="slider">
+          <Slider />
+        </div>
         <table id="returns">
           <thead>
             <tr>
