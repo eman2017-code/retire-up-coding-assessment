@@ -1,10 +1,10 @@
 import React from "react";
 
 // css imports
-import "../assets/style.css";
-import ListReturns from "./ListReturns";
+import "../../assets/style.css";
+import ListReturns from "../Returns/ListReturns";
 
-function App() {
+function LandingPage() {
   return (
     <div>
       <h1>RetireUp Coding Assessment</h1>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default LandingPage;

@@ -1,12 +1,13 @@
 import React from "react";
-import Slider, { Range } from "rc-slider";
+
+//COMPONENT IMPORTS
+import SliderComponent from "../Slider/Slider";
 
 //DATA IMPORT
-import returns from "../api/sp500.json";
+import returns from "../../api/sp500.json";
 
 //STYLE IMPORT
-import "../assets/style.css";
-import "rc-slider/assets/index.css";
+import "../../assets/style.css";
 
 class ListReturns extends React.Component {
   constructor() {
@@ -71,9 +72,7 @@ class ListReturns extends React.Component {
   render() {
     return (
       <div>
-        <div id="slider">
-          <Slider />
-        </div>
+        <SliderComponent />
         <table id="returns">
           <thead>
             <tr>
