@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 //COMPONENT IMPORTS
 import Slider, { Range } from "rc-slider";
@@ -49,13 +50,28 @@ class SliderComponent extends React.Component {
     this.setState({ min: min, max: max });
   };
 
+  handleChange = (e) => {
+    console.log(e);
+  };
+
   render() {
     return (
       <div id="slider">
-        <Range min={this.state.min} max={this.state.max} handle={this.handle} />
+        <Range
+          min={this.state.min}
+          max={this.state.max}
+          handle={this.handle}
+          onChange={this.handleChange}
+        />
       </div>
     );
   }
 }
 
-export default SliderComponent;
+const mapStateToProps = (state) => {
+  return {
+    records: state.records,
+  };
+};
+
+export default connect(mapStateToProps, {})(SliderComponent);
