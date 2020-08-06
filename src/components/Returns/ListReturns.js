@@ -1,7 +1,7 @@
 import React from "react";
 
 //COMPONENT IMPORTS
-import SliderComponent from "../Slider/Slider";
+import SliderComponent from "../Slider/SliderComponent";
 
 //DATA IMPORT
 import returns from "../../api/sp500.json";
@@ -27,7 +27,7 @@ class ListReturns extends React.Component {
   }
 
   // sets the cumulative values for each record
-  addCumulativeValues() {
+  addCumulativeValues = () => {
     // list for totalReturns
     const totalReturnArr = [];
 
@@ -53,10 +53,10 @@ class ListReturns extends React.Component {
     });
 
     this.setState({ records: addedKeys });
-  }
+  };
 
   // renders elements out of records
-  renderRecordsData() {
+  renderRecordsData = () => {
     return this.state.records.map((record, i) => {
       const { year, totalReturn, cumulativeKey } = record;
       return (
@@ -67,12 +67,17 @@ class ListReturns extends React.Component {
         </tr>
       );
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        <SliderComponent />
+        {/* Makes sure state is set before passes empty props to next component */}
+        {this.state.records.length === 0 ? (
+          "Loading..."
+        ) : (
+          <SliderComponent records={this.state.records} />
+        )}
         <table id="returns">
           <thead>
             <tr>
