@@ -56,8 +56,6 @@ class SliderComponent extends React.Component {
 
   handleChange = (e) => {
     // e: [selectedFromYear, selectedToYear]
-    // console.log("e", e);
-    // console.log("this.props.records", this.props.records);
     this.props.filterRecords(this.props.records, e);
   };
 
