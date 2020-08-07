@@ -52,7 +52,6 @@ class ListReturns extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log("staten in ListReturns", state);
   return { records: state.records };
 };
 
