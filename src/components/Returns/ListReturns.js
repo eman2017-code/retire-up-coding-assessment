@@ -31,7 +31,7 @@ class ListReturns extends React.Component {
     return (
       <div>
         {/* Makes sure state is set before passes empty props to next component */}
-        {this.props.records.length === 0 ? (
+        {this.props.records.records.length === 0 ? (
           "Loading..."
         ) : (
           <SliderComponent records={this.props.records} />

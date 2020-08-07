@@ -8,14 +8,11 @@ import { filterRecords } from "../../actions";
 import "rc-slider/assets/index.css";
 import "../../assets/style.css";
 
-//STYLE IMPORTS
+//SLIDER IMPORTS
 import Tooltip from "rc-tooltip";
 const Slider = require("rc-slider");
-
-//SLIDER IMPORTS
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
-
 const { Handle } = Slider;
 
 class SliderComponent extends React.Component {
@@ -23,8 +20,8 @@ class SliderComponent extends React.Component {
     super(props);
 
     this.state = {
-      min: 0,
-      max: 0,
+      min: this.props.records.records[0].year,
+      max: this.props.records.records.slice(0).reverse()[0].year,
     };
   }
 
@@ -59,20 +56,20 @@ class SliderComponent extends React.Component {
 
   handleChange = (e) => {
     // e: [selectedFromYear, selectedToYear]
+    // console.log("e", e);
+    // console.log("this.props.records", this.props.records);
     this.props.filterRecords(this.props.records, e);
   };
 
   render() {
-    const min = this.props.records.records[0].year;
-    const max = this.props.records.records.slice(0).reverse()[0].year;
     return (
       <div id="slider">
         <Range
-          min={min}
-          max={max}
+          min={this.state.min}
+          max={this.state.max}
           range={true}
           handle={this.handle}
-          defaultValue={[min, max]}
+          defaultValue={[this.state.min, this.state.max]}
           onChange={this.handleChange}
           tipFormatter={(value) => `${value}`}
         />
@@ -82,8 +79,10 @@ class SliderComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log("state in SliderComponent", state);
   return {
     records: state.records,
+    filteredRecords: state.filteredRecords,
   };
 };
 
