@@ -11,6 +11,7 @@ const initialState = {
   records: returns.reverse(),
   years: { min: 0, max: 100 },
   filteredRecords: [],
+  isFiltering: false,
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -54,12 +55,11 @@ const recordsReducer = (state = initialState, action) => {
         return selection.year >= fromYear && selection.year <= toYear;
       });
 
-      console.log(state);
-
       return {
         ...state,
         filteredRecords: selectedYears,
         years: { min: fromYear, max: toYear },
+        isFiltering: true,
       };
 
     default:

@@ -13,6 +13,19 @@ class ListReturns extends React.Component {
     this.props.listAllRecords();
   }
 
+  renderFilteredRecordsData = () => {
+    return this.props.records.filteredRecords.map((filteredRecord, i) => {
+      const { year, totalReturn, cumulativeKey } = filteredRecord;
+      return (
+        <tr key={i}>
+          <td>{year}</td>
+          <td>{totalReturn}</td>
+          <td>{cumulativeKey}</td>
+        </tr>
+      );
+    });
+  };
+
   // renders elements out of records
   renderRecordsData = () => {
     return this.props.records.records.map((record, i) => {
@@ -44,7 +57,11 @@ class ListReturns extends React.Component {
               <th>Cumulative Return</th>
             </tr>
           </thead>
-          <tbody>{this.renderRecordsData()}</tbody>
+          {!this.props.records.isFiltering ? (
+            <tbody>{this.renderRecordsData()}</tbody>
+          ) : (
+            <tbody>{this.renderFilteredRecordsData()}</tbody>
+          )}
         </table>
       </div>
     );
@@ -52,7 +69,11 @@ class ListReturns extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { records: state.records };
+  return {
+    records: state.records,
+    filteredRecords: state.records.filteredRecords,
+    isFiltering: state.records.isFiltering,
+  };
 };
 
 // export default ListReturns;

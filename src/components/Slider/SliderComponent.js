@@ -79,10 +79,8 @@ class SliderComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log("state in SliderComponent", state);
   return {
     records: state.records,
-    filteredRecords: state.filteredRecords,
   };
 };
 
