@@ -71,6 +71,8 @@ class SliderComponent extends React.Component {
           onChange={this.handleChange}
           tipFormatter={(value) => `${value}`}
         />
+        <span className="spanOne">{this.state.min}</span>
+        <span className="spanTwo">{this.state.max}</span>
       </div>
     );
   }
