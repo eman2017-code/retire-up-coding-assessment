@@ -11,12 +11,6 @@ import "../../assets/style.css";
 class ListReturns extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.props);
-
-    this.state = {
-      records: [],
-      cumulativeReturnArr: [],
-    };
   }
 
   componentDidMount() {
@@ -25,7 +19,7 @@ class ListReturns extends React.Component {
 
   // renders elements out of records
   renderRecordsData = () => {
-    return this.props.records.map((record, i) => {
+    return this.props.records.records.map((record, i) => {
       const { year, totalReturn, cumulativeKey } = record;
       return (
         <tr key={i}>
@@ -44,7 +38,7 @@ class ListReturns extends React.Component {
         {this.props.records.length === 0 ? (
           "Loading..."
         ) : (
-          <SliderComponent records={this.state.records} />
+          <SliderComponent records={this.props.records} />
         )}
         <table id="returns">
           <thead>
@@ -62,8 +56,7 @@ class ListReturns extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log("state", state);
-  return { records: [...state.records] };
+  return { records: state.records };
 };
 
 // export default ListReturns;
