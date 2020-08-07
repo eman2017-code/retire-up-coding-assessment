@@ -8,8 +8,8 @@ export const listAllRecords = (records) => ({
 });
 
 // filters records
-export const filterRecords = (records, e) => ({
+export const filterRecords = (records, years) => ({
   type: types.FILTER_RECORDS,
-  payload: records,
-  e,
+  records,
+  years,
 });

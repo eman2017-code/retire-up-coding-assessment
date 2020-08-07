@@ -9,7 +9,7 @@ import returns from "../api/sp500.json";
 
 const initialState = {
   records: returns.reverse(),
-  year: { min: 0, max: 100 },
+  years: { min: 0, max: 100 },
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -43,14 +43,21 @@ const recordsReducer = (state = initialState, action) => {
         records: [...addedKeys],
       };
 
-    // case FILTER_RECORDS:
-    //   const min = state.year.min
-    //   const max = state.year.min
-    //   const years = {}
-    //   return [
-    //     ...state,
-    //     // year: { min: action.year, max: action.year },
-    //   ];
+    case FILTER_RECORDS:
+      // selections from the user from the slider
+      const fromYear = action.years[0];
+      const toYear = action.years[1];
+
+      // filters out the appropriate records
+      const selectedYears = state.records.filter(function (selection) {
+        return selection.year >= fromYear && selection.year <= toYear;
+      });
+
+      return {
+        ...state,
+        records: [...selectedYears],
+        years: { min: fromYear, max: toYear },
+      };
 
     default:
       return state;

@@ -9,10 +9,6 @@ import SliderComponent from "../Slider/SliderComponent";
 import "../../assets/style.css";
 
 class ListReturns extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.listAllRecords();
   }
@@ -56,6 +52,7 @@ class ListReturns extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log("staten in ListReturns", state);
   return { records: state.records };
 };
 

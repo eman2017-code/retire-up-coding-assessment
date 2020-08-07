@@ -70,21 +70,20 @@ class SliderComponent extends React.Component {
   };
 
   handleChange = (e) => {
-    console.log(e);
-    // console.log(this.props.records);
-    // this.props.filterRecords(this.props.records);
+    this.props.filterRecords(this.props.records, e);
   };
 
   render() {
-    // console.log(this.state.marks);
+    // console.log(typeof this.state.max);
     return (
       <div id="slider">
-        <Slider.Range
+        <Range
           // marks={this.state.marks}
           min={this.state.min}
           max={this.state.max}
           handle={this.handle}
           onChange={this.handleChange}
+          defaultValue={[this.state.min, this.state.max]}
         />
       </div>
     );
@@ -92,6 +91,7 @@ class SliderComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log("state in SliderComponent", state);
   return {
     records: state.records,
   };
