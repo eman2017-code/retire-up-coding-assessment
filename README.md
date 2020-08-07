@@ -14,11 +14,11 @@ Code Test
    use a range slider like the one in http://react-component.github.io/slider/examples/handle.html (Range with custom handle)
    The range would be the start and end years
 
-the table below would filter out to show only the years and the cumulative returns between them
+- the table below would filter out to show only the years and the cumulative returns between them
 
-for e.g say you have downloaded S&P 500 index returns from 1970 - 2018
-the range slider on top would default to the maximim range (1970 - 2018)
-the table below would show each year in a row and the return and cumulative return
+- for e.g say you have downloaded S&P 500 index returns from 1970 - 2018
+  the range slider on top would default to the maximim range (1970 - 2018)
+  the table below would show each year in a row and the return and cumulative return
 
-If you change the range slider to 2000 to 2010
-the table below would show only those 11 rows (2000 - 2010 both inclusive) and the cumulative return from 2000
+- If you change the range slider to 2000 to 2010
+  the table below would show only those 11 rows (2000 - 2010 both inclusive) and the cumulative return from 2000

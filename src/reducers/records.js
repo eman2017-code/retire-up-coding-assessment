@@ -40,7 +40,7 @@ const recordsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        records: addedKeys,
+        records: [...addedKeys],
       };
 
     // case FILTER_RECORDS:
