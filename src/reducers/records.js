@@ -28,9 +28,6 @@ const recordsReducer = (state = initialState, action) => {
         totalReturnArr.push(Number(el.totalReturn))
       );
 
-      // holds the first year a var (important for calulcating the cumulative returns)
-      const firstYear = state.records;
-
       //HOW TO CALCULATE THE CUMULATIVE RETURN
       // cumulativeVal = ( currentPrice / initialPrice ) - 1
 
