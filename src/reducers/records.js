@@ -30,7 +30,7 @@ const recordsReducer = (state = initialState, action) => {
 
       // create a cumulative list based off totalReturns
       totalReturnArr.reduce(function (a, b, i) {
-        return (cumaltiveValues[i] = Math.round(a + b * 100) / 100);
+        return (cumaltiveValues[i] = Math.round((a + b) * 100) / 100);
       }, 0); // import to set initial sum to 0 to account for the first number
 
       // iterate through newly created cumulativeValues[] & add appropriate values
