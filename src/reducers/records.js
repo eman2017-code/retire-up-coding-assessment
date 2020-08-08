@@ -28,12 +28,14 @@ const recordsReducer = (state = initialState, action) => {
         totalReturnArr.push(Number(el.totalReturn))
       );
 
+      console.log(totalReturnArr);
+
       //HOW TO CALCULATE THE CUMULATIVE RETURN
       // cumulativeVal = ( currentPrice / initialPrice ) - 1
 
       // create a cumulative list based off totalReturns
       totalReturnArr.reduce(function (a, b, i) {
-        return (cumaltiveValues[i] = Math.round((b - a - 1) * 100) / 100);
+        return (cumaltiveValues[i] = Math.round((b + a) * 100) / 100);
       }, 0); // import to set initial sum to 0 to account for the first number
 
       // iterate through newly created cumulativeValues[] & add appropriate values
