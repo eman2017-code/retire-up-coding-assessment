@@ -28,8 +28,6 @@ const recordsReducer = (state = initialState, action) => {
         totalReturnArr.push(Number(el.totalReturn))
       );
 
-      console.log(totalReturnArr);
-
       //HOW TO CALCULATE THE CUMULATIVE RETURN
       // cumulativeVal = ( currentPrice / initialPrice ) - 1
 
